@@ -12,22 +12,22 @@ import { BlurView } from "expo-blur";
 import Colors from "@/constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
-import { getAppIcon, setAppIcon } from "expo-dynamic-app-icon";
+// import { getAppIcon, setAppIcon } from "expo-dynamic-app-icon";
 
-const ICONS = [
-  {
-    name: "Default",
-    icon: require("@/assets/images/icon.png"),
-  },
-  {
-    name: "Dark",
-    icon: require("@/assets/images/icon-dark.png"),
-  },
-  {
-    name: "Vivid",
-    icon: require("@/assets/images/icon-vivid.png"),
-  },
-];
+// const ICONS = [
+//   {
+//     name: "Normal",
+//     icon: require("@/assets/images/icon.png"),
+//   },
+//   {
+//     name: "Dark",
+//     icon: require("@/assets/images/icon-dark.png"),
+//   },
+//   {
+//     name: "Vivid",
+//     icon: require("@/assets/images/icon-vivid.png"),
+//   },
+// ];
 
 const Page = () => {
   const { user } = useUser();
@@ -36,16 +36,16 @@ const Page = () => {
   const [lastName, setLastName] = useState(user?.lastName);
   const [edit, setEdit] = useState(false);
 
-  const [activeIcon, setActiveIcon] = useState("Default");
+  const [activeIcon, setActiveIcon] = useState("Normal");
 
-  useEffect(() => {
-    const loadCurrentIconPref = async () => {
-      const icon = await getAppIcon();
-      console.log("🚀 ~ loadCurrentIconPref ~ icon:", icon);
-      setActiveIcon(icon);
-    };
-    loadCurrentIconPref();
-  }, []);
+  // useEffect(() => {
+  //   const loadCurrentIconPref = async () => {
+  //     const icon = await getAppIcon();
+  //     console.log("🚀 ~ loadCurrentIconPref ~ icon:", icon);
+  //     setActiveIcon(icon);
+  //   };
+  //   loadCurrentIconPref();
+  // }, []);
 
   const onSaveUser = async () => {
     try {
@@ -77,10 +77,10 @@ const Page = () => {
     }
   };
 
-  const onChangeAppIcon = async (icon: string) => {
-    await setAppIcon(icon.toLowerCase());
-    setActiveIcon(icon);
-  };
+  // const onChangeAppIcon = async (icon: string) => {
+  //   await setAppIcon(icon.toLowerCase());
+  //   setActiveIcon(icon);
+  // };
 
   return (
     <BlurView
@@ -157,7 +157,7 @@ const Page = () => {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.actions}>
+      {/* <View style={styles.actions}>
         {ICONS.map((icon) => (
           <TouchableOpacity
             key={icon.name}
@@ -171,7 +171,7 @@ const Page = () => {
             )}
           </TouchableOpacity>
         ))}
-      </View>
+      </View> */}
     </BlurView>
   );
 };
